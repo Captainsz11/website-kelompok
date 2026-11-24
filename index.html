@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Our Group Portfolio</title>
+<title>Portfolio Kelompok</title>
 
 <style>
 * {
@@ -28,118 +28,147 @@ header {
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
+    gap: 15px;
 }
 
 header h2 {
-    color: #38bdf8;
+    font-size: 23px;
 }
 
 nav a {
     color: white;
     text-decoration: none;
-    margin: 10px;
+    margin-left: 20px;
+    font-size: 14px;
 }
 
 nav a:hover {
-    color: #38bdf8;
+    color: #60a5fa;
 }
 
 .hero {
-    background: linear-gradient(135deg, #0f172a, #2563eb);
+    min-height: 400px;
+    background: linear-gradient(135deg, #1e3a8a, #2563eb);
     color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     text-align: center;
-    padding: 110px 20px;
+    padding: 50px 20px;
 }
 
 .hero h1 {
-    font-size: 45px;
+    font-size: 42px;
     margin-bottom: 15px;
 }
 
 .hero p {
-    color: #dbeafe;
-    font-size: 18px;
+    font-size: 17px;
+    max-width: 600px;
+    line-height: 1.6;
 }
 
 .btn {
     display: inline-block;
-    background: #38bdf8;
-    color: #0f172a;
-    padding: 13px 25px;
     margin-top: 25px;
-    text-decoration: none;
+    padding: 13px 25px;
+    background: white;
+    color: #1d4ed8;
     border-radius: 8px;
+    text-decoration: none;
     font-weight: bold;
 }
 
 .btn:hover {
-    background: white;
+    background: #dbeafe;
 }
 
 section {
     padding: 65px 8%;
+}
+
+.section-title {
     text-align: center;
-}
-
-section h2 {
     font-size: 30px;
-    margin-bottom: 20px;
+    margin-bottom: 35px;
 }
 
-#about, #team {
+.about {
+    text-align: center;
+    max-width: 750px;
+    margin: auto;
+    line-height: 1.8;
+}
+
+.team {
     background: white;
 }
 
 .members {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 20px;
-    margin-top: 30px;
 }
 
-.card {
-    background: #f8fafc;
-    width: 220px;
+.member-card {
+    background: #f1f5f9;
     padding: 30px 20px;
+    text-align: center;
+    border-radius: 12px;
+    border: 1px solid #e2e8f0;
+}
+
+.member-card h3 {
+    margin-bottom: 10px;
+    color: #1d4ed8;
+}
+
+.member-card p {
+    color: #64748b;
+    font-size: 14px;
+}
+
+.project-card {
+    max-width: 600px;
+    margin: auto;
+    background: white;
+    padding: 35px;
+    text-align: center;
     border-radius: 12px;
     box-shadow: 0 4px 15px #cbd5e1;
-    transition: 0.3s;
 }
 
-.card:hover {
-    transform: translateY(-7px);
+.project-card h3 {
+    margin-bottom: 15px;
 }
 
-.card h3 {
-    color: #2563eb;
-    margin-bottom: 10px;
+.project-card p {
+    line-height: 1.6;
+    color: #64748b;
 }
 
-#projects {
-    background: #dbeafe;
-}
-
-#contact {
-    background: #0f172a;
+.project-card .btn {
+    background: #2563eb;
     color: white;
 }
 
 footer {
-    background: #020617;
+    background: #0f172a;
     color: white;
     text-align: center;
-    padding: 20px;
+    padding: 22px;
+    font-size: 14px;
 }
 
-@media(max-width: 600px) {
+@media (max-width: 600px) {
     header {
         justify-content: center;
-        gap: 15px;
+        text-align: center;
     }
 
-    nav {
-        text-align: center;
+    nav a {
+        margin: 0 7px;
     }
 
     .hero h1 {
@@ -152,82 +181,105 @@ footer {
 <body>
 
 <header>
-    <h2>OUR PORTFOLIO</h2>
+    <h2>Portfolio Kelompok</h2>
 
     <nav>
         <a href="#home">Home</a>
         <a href="#about">About</a>
         <a href="#team">Team</a>
         <a href="#projects">Projects</a>
-        <a href="#contact">Contact</a>
     </nav>
 </header>
 
 <div class="hero" id="home">
     <h1>Welcome to Our Portfolio</h1>
-    <p>Creative Students, Building the Future.</p>
-    <a href="#about" class="btn">Discover More</a>
+    <p>
+        Selamat datang di website portfolio kelompok kami.
+        Website ini dibuat sebagai bagian dari tugas pembelajaran coding.
+    </p>
+
+    <a href="#projects" class="btn">View Our Project</a>
 </div>
 
 <section id="about">
-    <h2>About Our Team</h2>
-    <p>
-        We are a group of students who are interested
-        in technology, creativity, and web development.
-        This website is our school project.
-    </p>
+    <h2 class="section-title">About Us</h2>
+
+    <div class="about">
+        <p>
+            Kami adalah sebuah kelompok yang sedang mempelajari
+            dasar-dasar pemrograman web menggunakan HTML, CSS,
+            dan JavaScript.
+        </p>
+        <p>
+            Website ini merupakan hasil kerja sama dan pembelajaran
+            kami dalam membuat sebuah halaman web sederhana.
+        </p>
+    </div>
 </section>
 
-<section id="team">
-    <h2>Meet Our Members</h2>
+<section class="team" id="team">
+    <h2 class="section-title">Pria-pria berkualitas</h2>
 
-    <div class="members">
+    
+<div class="members">
 
-        <div class="card">
-            <h3>Member 1</h3>
-            <p>Group Leader</p>
-        </div>
+    <div class="member-card">
+        <h3>Santa Romeo Talumepa</h3>
+        <p>Nomor Absen: 27</p>
+    </div>
 
-        <div class="card">
-            <h3>Member 2</h3>
-            <p>Web Designer</p>
-        </div>
+    <div class="member-card">
+        <h3>Hizkia Bimar</h3>
+        <p>Nomor Absen: 10</p>
+    </div>
 
-        <div class="card">
-            <h3>Member 3</h3>
-            <p>Programmer</p>
-        </div>
+    <div class="member-card">
+        <h3>NHilkia Bimar</h3>
+        <p>Nomor Absen: 09</p>
+    </div>
 
-        <div class="card">
-            <h3>Member 4</h3>
-            <p>Team Member</p>
+    <div class="member-card">
+        <h3>Muhammad Akbar AlFachrezy</h3>
+        <p>Nomor Absen: 21</p>
+    </div>
+
+    <div class="member-card">
+        <h3>Myciko Al Marsiyano </h3>
+        <p>Nomor Absen: 22</p>
+    </div>
+
+    <div class="member-card">
+        <h3>Dahli Aminudin</h3>
+        <p>Nomor Absen: 03</p>
+    </div>
+	
         </div>
 
     </div>
 </section>
 
 <section id="projects">
-    <h2>Our Projects</h2>
+    <h2 class="section-title">Proyek Kami</h2>
 
-    <div class="members">
-        <div class="card">
-            <h3>Simple Calculator</h3>
-            <p>A calculator created using HTML, CSS, and JavaScript.</p>
-            <a href="kalkulator.html" class="btn">Open Calculator</a>
-        </div>
+    <div class="project-card">
+        <h3>Simple Calculator</h3>
+
+        <p>
+            Kalkulator sederhana yang dibuat menggunakan
+            HTML, CSS, dan JavaScript. Kalkulator ini dapat
+            melakukan operasi penjumlahan, pengurangan,
+            perkalian, dan pembagian.
+        </p>
+
+        <a href="kalkulator.html" class="btn">
+            Open Calculator
+        </a>
     </div>
 </section>
 
-<section id="contact">
-    <h2>Contact Us</h2>
-    <p>Thank you for visiting our website!</p>
-    <p>Email: group@example.com</p>
-</section>
-
 <footer>
-    <p>&copy; 2026 Our Group Portfolio. All Rights Reserved.</p>
+    <p>© 2026 Portfolio Kelompok. All Rights Reserved.</p>
 </footer>
 
 </body>
 </html>
-
