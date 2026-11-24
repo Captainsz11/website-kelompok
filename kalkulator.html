@@ -1,0 +1,209 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kalkulator Kelompok</title>
+
+<style>
+* {
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #e2e8f0;
+}
+
+.calculator {
+    width: 300px;
+    padding: 20px;
+    border-radius: 16px;
+    background: #1e293b;
+    box-shadow: 0 8px 25px #64748b;
+}
+
+h2 {
+    color: white;
+    text-align: center;
+}
+
+#display {
+    width: 100%;
+    height: 65px;
+    margin-bottom: 12px;
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+    background: white;
+    color: #111827;
+    font-size: 27px;
+    text-align: right;
+}
+
+.buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+}
+
+button {
+    height: 55px;
+    border: none;
+    border-radius: 8px;
+    background: #cbd5e1;
+    font-size: 20px;
+    cursor: pointer;
+    touch-action: manipulation;
+}
+
+button:active {
+    opacity: 0.65;
+}
+
+.operator {
+    background: #3b82f6;
+    color: white;
+}
+
+.equal {
+    background: #22c55e;
+    color: white;
+}
+
+.clear {
+    background: #ef4444;
+    color: white;
+}
+</style>
+</head>
+
+<body>
+
+<div class="calculator">
+    <h2>Kalkulator</h2>
+
+    <input id="display" value="0" readonly>
+
+    <div class="buttons">
+        <button class="clear" onclick="clearCalc()">C</button>
+        <button onclick="deleteNum()">DEL</button>
+        <button class="operator" onclick="choose('/')">÷</button>
+        <button class="operator" onclick="choose('*')">×</button>
+
+        <button onclick="add('7')">7</button>
+        <button onclick="add('8')">8</button>
+        <button onclick="add('9')">9</button>
+        <button class="operator" onclick="choose('-')">−</button>
+
+        <button onclick="add('4')">4</button>
+        <button onclick="add('5')">5</button>
+        <button onclick="add('6')">6</button>
+        <button class="operator" onclick="choose('+')">+</button>
+
+        <button onclick="add('1')">1</button>
+        <button onclick="add('2')">2</button>
+        <button onclick="add('3')">3</button>
+        <button class="equal" onclick="calculate()">=</button>
+
+        <button onclick="add('0')">0</button>
+        <button onclick="add('.')">.</button>
+    </div>
+</div>
+
+<script>
+const display = document.getElementById("display");
+
+let first = null;
+let operator = null;
+let startNew = true;
+
+function add(number) {
+    if (display.value === "Error") clearCalc();
+
+    if (startNew) {
+        display.value = number === "." ? "0." : number;
+        startNew = false;
+        return;
+    }
+
+    if (number === "." && display.value.includes(".")) return;
+
+    if (display.value === "0" && number !== ".") {
+        display.value = number;
+    } else {
+        display.value += number;
+    }
+}
+
+function choose(op) {
+    if (display.value === "Error") return;
+
+    if (operator !== null && !startNew) {
+        calculate();
+    }
+
+    first = Number(display.value);
+    operator = op;
+    startNew = true;
+}
+
+function calculate() {
+    if (operator === null || startNew) return;
+
+    const second = Number(display.value);
+    let result;
+
+    if (operator === "+") result = first + second;
+    if (operator === "-") result = first - second;
+    if (operator === "*") result = first * second;
+
+    if (operator === "/") {
+        if (second === 0) {
+            display.value = "Error";
+            reset();
+            return;
+        }
+        result = first / second;
+    }
+
+    if (!Number.isFinite(result)) {
+        display.value = "Error";
+    } else {
+        display.value = String(Number(result.toPrecision(12)));
+    }
+
+    reset();
+    startNew = true;
+}
+
+function clearCalc() {
+    display.value = "0";
+    reset();
+    startNew = true;
+}
+
+function deleteNum() {
+    if (display.value === "Error" || startNew) {
+        display.value = "0";
+        startNew = true;
+        return;
+    }
+
+    display.value = display.value.slice(0, -1) || "0";
+}
+
+function reset() {
+    first = null;
+    operator = null;
+}
+</script>
+
+</body>
+</html>
